@@ -5,52 +5,67 @@
 
     <style>
         body {
+            margin: 0;
             font-family: Arial;
+            background: linear-gradient(to right, #141e30, #243b55);
+            color: white;
             text-align: center;
-            background-color: #f5f7fa;
         }
 
         h1 {
+            margin-top: 80px;
+            font-size: 40px;
+        }
+
+        p {
+            color: #ccc;
+        }
+
+        .upload-container {
             margin-top: 50px;
-            color: #333;
         }
 
         .upload-box {
-            margin-top: 50px;
+            background: white;
+            color: black;
+            width: 350px;
+            margin: auto;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0px 10px 30px rgba(0,0,0,0.3);
         }
 
         input[type="file"] {
-            padding: 10px;
-            border: 2px dashed #007bff;
-            background: white;
-            cursor: pointer;
+            margin-top: 20px;
         }
 
         button {
             margin-top: 20px;
             padding: 10px 20px;
             border: none;
-            background-color: #007bff;
+            background-color: #4a6cf7;
             color: white;
             font-size: 16px;
+            border-radius: 8px;
             cursor: pointer;
         }
 
         button:hover {
-            background-color: #0056b3;
+            background-color: #2d4ed8;
         }
     </style>
 </head>
 
 <body>
 
-    <h1>Orixo BG Remover 🔥</h1>
-    <p>Upload your image and remove background</p>
+    <h1>Orixo Background Remover 🔥</h1>
+    <p>Remove the background from your images for free</p>
 
-    <div class="upload-box">
-        <input type="file">
-        <br>
-        <button>Upload Image</button>
+    <div class="upload-container">
+        <div class="upload-box">
+            <input type="file"><br>
+            <button>Upload Image</button>
+        </div>
     </div>
 
 </body>
