@@ -13,39 +13,37 @@
         }
 
         h1 {
-            margin-top: 80px;
-            font-size: 40px;
-        }
-
-        p {
-            color: #ccc;
-        }
-
-        .upload-container {
-            margin-top: 50px;
+            margin-top: 60px;
         }
 
         .upload-box {
+            width: 350px;
+            margin: 40px auto;
+            padding: 30px;
             background: white;
             color: black;
-            width: 350px;
-            margin: auto;
-            padding: 30px;
             border-radius: 15px;
             box-shadow: 0px 10px 30px rgba(0,0,0,0.3);
         }
 
-        input[type="file"] {
+        .drop-area {
+            border: 2px dashed #aaa;
+            padding: 20px;
+            cursor: pointer;
+        }
+
+        img {
             margin-top: 20px;
+            max-width: 100%;
+            display: none;
         }
 
         button {
-            margin-top: 20px;
+            margin-top: 15px;
             padding: 10px 20px;
             border: none;
             background-color: #4a6cf7;
             color: white;
-            font-size: 16px;
             border-radius: 8px;
             cursor: pointer;
         }
@@ -58,15 +56,34 @@
 
 <body>
 
-    <h1>Orixo Background Remover 🔥</h1>
-    <p>Remove the background from your images for free</p>
+    <h1>Background Remover 🔥</h1>
+    <p>Upload your image and remove background</p>
 
-    <div class="upload-container">
-        <div class="upload-box">
-            <input type="file"><br>
-            <button>Upload Image</button>
+    <div class="upload-box">
+
+        <div class="drop-area" id="drop-area">
+            <p>Drag & Drop Image Here</p>
+            <input type="file" id="fileInput">
         </div>
+
+        <button>Upload Image</button>
+
+        <img id="preview">
+
     </div>
+
+    <script>
+        const fileInput = document.getElementById("fileInput");
+        const preview = document.getElementById("preview");
+
+        fileInput.addEventListener("change", function() {
+            const file = this.files[0];
+            if (file) {
+                preview.src = URL.createObjectURL(file);
+                preview.style.display = "block";
+            }
+        });
+    </script>
 
 </body>
 </html>
