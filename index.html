@@ -1,295 +1,213 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+<meta charset="UTF-8">
 <title>ORIXO AI Background Remover</title>
 
 <style>
 body {
-  margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background: #f5f7ff;
+    margin: 0;
+    font-family: Arial;
+    background: #f5f7fb;
 }
 
-/* HEADER */
-header {
-  display: flex;
-  justify-content: space-between;
-  padding: 15px 50px;
-  background: white;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+.header {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 40px;
+    background: white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-.logo {
-  font-size: 22px;
-  font-weight: bold;
+.header h2 {
+    margin: 0;
 }
 
-.nav-right {
-  display: flex;
-  gap: 15px;
-}
-
-.login-btn {
-  background: #4a6cf7;
-  color: white;
-  padding: 8px 15px;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
-.profile {
-  background: #eee;
-  padding: 8px 15px;
-  border-radius: 6px;
-}
-
-/* HERO */
 .hero {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  padding: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 50px;
 }
 
 .hero-text {
-  max-width: 500px;
+    max-width: 500px;
 }
 
 .hero-text h1 {
-  font-size: 40px;
+    font-size: 40px;
 }
 
-.hero img {
-  width: 250px;
-}
-
-/* UPLOAD */
 .upload-box {
-  background: white;
-  width: 420px;
-  margin: auto;
-  padding: 25px;
-  border-radius: 12px;
-  text-align: center;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    margin: 20px auto;
+    width: 300px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
-/* BUTTON */
 button {
-  margin-top: 10px;
-  padding: 12px 25px;
-  background: #4a6cf7;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
+    background: #4c6ef5;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 10px;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
-/* IMAGE SECTION */
-.images {
-  display: flex;
-  justify-content: space-around;
-  padding: 50px;
+.result {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 40px;
 }
 
-.box {
-  width: 40%;
-  text-align: center;
+img {
+    max-width: 300px;
+    border-radius: 10px;
 }
 
-.box img {
-  width: 100%;
-  border-radius: 10px;
-}
-
-/* DOWNLOAD SECTION */
-.download-section {
-  text-align: center;
-  margin-bottom: 50px;
-}
-
-.select-box {
-  padding: 8px;
-  margin: 10px;
-}
-
-.download-btn {
-  background: green;
-  padding: 10px 20px;
-  color: white;
-  border-radius: 6px;
-  text-decoration: none;
-}
-
-/* FOOTER */
-footer {
-  background: #111;
-  color: white;
-  padding: 40px;
-  text-align: center;
-}
-footer a {
-  color: #4a6cf7;
-  margin: 10px;
+.footer {
+    background: black;
+    color: white;
+    text-align: center;
+    padding: 30px;
+    margin-top: 50px;
 }
 </style>
+
 </head>
 
 <body>
 
-<header>
-  <div class="logo">ORIXO</div>
+<!-- HEADER -->
+<div class="header">
+    <h2>ORIXO</h2>
+    <div>
+        <button>Profile</button>
+        <button>Login</button>
+    </div>
+</div>
 
-  <div class="nav-right">
-    <div class="profile">Profile</div>
-    <div class="login-btn">Login</div>
-  </div>
-</header>
+<!-- HERO -->
+<div class="hero">
 
-<section class="hero">
-  <div class="hero-text">
-    <h1>Remove Image Background</h1>
-    <p><b>Professional AI Tool by ORIXO</b></p>
-    <p>
-      Remove background instantly with AI.  
-      High quality results for creators, gamers, and professionals.
-    </p>
-    <p><b>Fast • Accurate • HD Output</b></p>
-  </div>
+    <div class="hero-text">
+        <h1>Remove Image Background</h1>
+        <p><b>Professional AI Tool by ORIXO</b></p>
+        <p>Remove background instantly with AI. High quality results for creators and professionals.</p>
+        <p><b>Fast • Accurate • HD Output</b></p>
+    </div>
 
-  <img src="logo.png">
-</section>
+    <!-- LOGO -->
+    <div>
+        <img src="/static/logo.png" width="250">
+    </div>
 
+</div>
+
+<!-- UPLOAD -->
 <div class="upload-box">
-  <input type="file" id="fileInput"><br>
-  <button onclick="processImage()">Remove Background</button>
-  <p id="loading" style="display:none;">Processing...</p>
-</div>
 
-<div class="images">
-  <div class="box">
-    <h3>Original</h3>
-    <img id="original">
-  </div>
+    <input type="file" id="fileInput"><br>
 
-  <div class="box">
-    <h3>Output</h3>
-    <img id="output">
-  </div>
-</div>
+    <button onclick="uploadImage()">Remove Background</button>
 
-<!-- DOWNLOAD OPTIONS -->
-<div class="download-section">
-
-  <h3>Download Settings</h3>
-
-  <select id="format" class="select-box">
-    <option value="png">PNG</option>
-    <option value="jpg">JPG</option>
-  </select>
-
-  <select id="quality" class="select-box">
-    <option value="1">High Quality</option>
-    <option value="0.7">Medium</option>
-    <option value="0.4">Low (Small Size)</option>
-  </select>
-
-  <br>
-
-  <a id="downloadBtn" class="download-btn" style="display:none;">
-    Download Image
-  </a>
+    <p id="status"></p>
 
 </div>
 
-<footer>
-  <h2>ORIXO Company</h2>
-  <p>Owner: Piyush Maurya</p>
-  <p>AI Powered Image Processing Platform</p>
+<!-- RESULT -->
+<div class="result">
 
-  <p>
-    <a href="#">Instagram</a>
-    <a href="#">YouTube</a>
-  </p>
+    <div>
+        <h3>Original</h3>
+        <img id="originalImage">
+    </div>
 
-  <p>Contact: pm77627012gmail.com</p>
-</footer>
+    <div>
+        <h3>Output</h3>
+        <img id="outputImage">
+    </div>
 
+</div>
+
+<!-- DOWNLOAD SETTINGS -->
+<div style="text-align:center; margin-top:30px;">
+    <h3>Download Settings</h3>
+
+    <select id="format">
+        <option>PNG</option>
+        <option>JPG</option>
+    </select>
+
+    <select>
+        <option>High Quality</option>
+        <option>Medium</option>
+    </select>
+
+    <br><br>
+
+    <a id="downloadBtn" download>
+        <button>Download Image</button>
+    </a>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+    <h3>ORIXO Company</h3>
+    <p>Owner: Piyush Maurya</p>
+    <p>AI Powered Image Processing Platform</p>
+    <p>Instagram | YouTube</p>
+    <p>Contact: pm77627012@gmail.com</p>
+</div>
+
+<!-- SCRIPT -->
 <script>
-const fileInput = document.getElementById("fileInput");
-const original = document.getElementById("original");
-const output = document.getElementById("output");
-const loading = document.getElementById("loading");
-const downloadBtn = document.getElementById("downloadBtn");
+function uploadImage() {
+    let fileInput = document.getElementById("fileInput");
+    let file = fileInput.files[0];
 
-const loginBtn = document.querySelector(".login-btn");
-const profile = document.querySelector(".profile");
+    if (!file) {
+        alert("Select image first");
+        return;
+    }
 
-// LOGIN SYSTEM
-loginBtn.onclick = () => {
-  const name = prompt("Enter your name:");
-  if (name) {
-    localStorage.setItem("user", name);
-    updateUser();
-  }
-};
+    // show original
+    document.getElementById("originalImage").src = URL.createObjectURL(file);
 
-function updateUser() {
-  const user = localStorage.getItem("user");
-  if (user) {
-    profile.innerText = user;
-    loginBtn.style.display = "none";
-  }
-}
+    let formData = new FormData();
+    formData.append("image", file);
 
-updateUser();
+    document.getElementById("status").innerText = "Processing...";
 
-// IMAGE PREVIEW
-fileInput.addEventListener("change", function () {
-  original.src = URL.createObjectURL(this.files[0]);
-});
+    fetch("/remove-bg", {
+        method: "POST",
+        body: formData
+    })
+    .then(res => res.json())
+    .then(data => {
 
-// IMAGE PROCESS
-async function processImage() {
+        if (data.status === "success") {
 
-  loading.style.display = "block";
+            let outputUrl = data.image_url + "?t=" + new Date().getTime();
 
-  const formData = new FormData();
-  formData.append("image", fileInput.files[0]);
+            document.getElementById("outputImage").src = outputUrl;
 
-  const res = await fetch("http://127.0.0.1:5000/remove-bg", {
-    method: "POST",
-    body: formData
-  });
+            document.getElementById("downloadBtn").href = outputUrl;
 
-  const blob = await res.blob();
+            document.getElementById("status").innerText = "Done ✅";
 
-  const img = new Image();
-  img.src = URL.createObjectURL(blob);
+        } else {
+            alert(data.message);
+        }
 
-  img.onload = () => {
-
-    const format = document.getElementById("format").value;
-    const quality = document.getElementById("quality").value;
-
-    const canvas = document.createElement("canvas");
-    const ctx = canvas.getContext("2d");
-
-    canvas.width = img.width;
-    canvas.height = img.height;
-
-    ctx.drawImage(img, 0, 0);
-
-    const final = canvas.toDataURL(`image/${format}`, quality);
-
-    output.src = final;
-
-    downloadBtn.href = final;
-    downloadBtn.download = "orixo-output." + format;
-    downloadBtn.style.display = "inline-block";
-  };
-
-  loading.style.display = "none";
+    })
+    .catch(() => {
+        alert("Server Error");
+    });
 }
 </script>
 
